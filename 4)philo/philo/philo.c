@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:29:29 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/24 13:13:36 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:11:13 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	main(int argc, char **argv)
 			return (1);
 		ft_thread_create(data, &done);
 		ft_free(data);
+
 	}
 	else
 		printf("Wrong input parameters!\n");

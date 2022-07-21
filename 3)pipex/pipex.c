@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 12:57:46 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/01 15:58:32 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:20:35 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	ft_parent(int argc, int *fd, int pid, int i)
 	waitpid(pid, &status, 0);
 	if (status)
 	{
-		write(1, "Error: Command not found!\n", 26);
+		write(2, "Error: Command not found!\n", 26);
 		exit(127);
-	}	
+	}
 	if (i != argc - 4)
 		dup2(fd[0], 0);
 	close(fd[0]);

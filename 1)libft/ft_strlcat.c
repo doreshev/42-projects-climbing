@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:14:22 by doreshev          #+#    #+#             */
-/*   Updated: 2022/04/07 17:06:07 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:03:32 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	srclength;
 	size_t	dstlength;
-	size_t	i;
 
-	i = 0;
 	srclength = ft_strlen(src);
 	dstlength = ft_strlen(dst);
 	if (dstlength >= dstsize)

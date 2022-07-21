@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:07:51 by doreshev          #+#    #+#             */
-/*   Updated: 2022/04/11 17:47:56 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:03:36 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	srclength;
-	size_t	i;
 
-	i = 0;
 	srclength = ft_strlen(src);
 	if (!dst)
 		return (srclength);

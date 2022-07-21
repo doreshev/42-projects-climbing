@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 16:49:20 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/24 13:19:51 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:10:30 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,12 @@ int	ft_atoi(char *str)
 long unsigned int	ft_time(struct timeval *time)
 {
 	long unsigned int	i;
-	struct timeval		*tmp;
+	struct timeval		tmp;
 
-	tmp = malloc(sizeof(struct timeval) * 1);
-	if (!tmp)
+	if (gettimeofday(&tmp, 0) == -1)
 		return (-1);
-	if (gettimeofday(tmp, 0) == -1)
-		return (-1);
-	i = (tmp->tv_sec - time->tv_sec) * 1000;
-	i += (tmp->tv_usec - time->tv_usec) / 1000;
-	free(tmp);
+	i = (tmp.tv_sec - time->tv_sec) * 1000;
+	i += (tmp.tv_usec - time->tv_usec) / 1000;
 	return (i);
 }
 
@@ -84,29 +80,28 @@ void	ft_printf(char *s, t_data *data)
 {
 	long int	i;
 
-	i = ft_time(data->time);
-	if (i < 0 || *data->die)
-		return ;
 	pthread_mutex_lock(data->in);
+	i = ft_time(data->time);
+	if (*data->die)
+	{
+		pthread_mutex_unlock(data->in);
+		return ;
+	}
 	printf("%lums %i %s\n", i, data->phn, s);
 	pthread_mutex_unlock(data->in);
 }
 
 void	ft_sleep(int i)
 {
-	struct timeval	*tmp;
+	struct timeval	tmp;
 	int				j;
 
-	tmp = malloc(sizeof(struct timeval) * 1);
-	if (!tmp)
-		return ;
-	if (gettimeofday(tmp, 0) == -1)
+	if (gettimeofday(&tmp, 0) == -1)
 		return ;
 	j = 0;
 	while (j < i)
 	{
-		usleep(100);
-		j = ft_time(tmp);
+		usleep(200);
+		j = ft_time(&tmp);
 	}
-	free(tmp);
 }

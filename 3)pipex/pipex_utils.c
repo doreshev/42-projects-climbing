@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:59:42 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/01 15:38:06 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:15:35 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ int	ft_here_doc(char *argv)
 		unlink("hdoc.tmp");
 		exit(0);
 	}
-	while (ft_strncmp2(s, argv))
+	while (ft_strncmp2(s, argv) && s)
 	{
 		write(in, s, ft_strlen(s));
 		free(s);
 		s = get_next_line(0);
-		if (!s)
-			break ;
 	}
 	free(s);
 	close(in);
