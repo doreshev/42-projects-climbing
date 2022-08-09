@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Created: 2022/04/11 14:46:53 by doreshev          #+#    #+#             */
+/*   Updated: 2022/04/11 17:45:53 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_lstsize(t_list *lst)
 {
-	int	mod;
-	int	i;
+	size_t	i;
 
-	i = 0;
-	mod = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\v' || *str == '\r')
-		str++;
-	if (*str == '-')
-	{
-		mod = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	if (ft_isdigit(*str) == 0)
+	i = 1;
+	if (!lst)
 		return (0);
-	while (ft_isdigit(*str) == 1)
+	while (lst->next)
 	{
-		i = i * 10 + (*str - 48);
-		str++;
+		lst = lst->next;
+		i++;
 	}
-	return (mod * i);
+	return (i);
 }

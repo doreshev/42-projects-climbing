@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Created: 2022/04/11 15:23:02 by doreshev          #+#    #+#             */
+/*   Updated: 2022/04/11 17:25:47 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	int	mod;
-	int	i;
+	t_list	*n1;
+	t_list	*n2;
 
-	i = 0;
-	mod = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\v' || *str == '\r')
-		str++;
-	if (*str == '-')
+	if (!lst)
+		return ;
+	n1 = *lst;
+	while (n1)
 	{
-		mod = -1;
-		str++;
+		n2 = n1->next;
+		del(n1->content);
+		free(n1);
+		n1 = n2;
 	}
-	else if (*str == '+')
-		str++;
-	if (ft_isdigit(*str) == 0)
-		return (0);
-	while (ft_isdigit(*str) == 1)
-	{
-		i = i * 10 + (*str - 48);
-		str++;
-	}
-	return (mod * i);
+	*lst = NULL;
 }

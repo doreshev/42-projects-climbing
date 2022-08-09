@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Created: 2022/06/22 13:32:06 by doreshev          #+#    #+#             */
+/*   Updated: 2022/07/27 15:51:14 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int	ft_atoi(const char *str)
+int	main(int argc, char **argv, char **envp)
 {
-	int	mod;
-	int	i;
+	t_data	a;
 
-	i = 0;
-	mod = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\v' || *str == '\r')
-		str++;
-	if (*str == '-')
+	if (argc == 1)
 	{
-		mod = -1;
-		str++;
+		a.argv0 = argv[0];
+		a.env1 = envp;
+		ft_init(&a);
+		rl_redisplay();
+		write(1, "exit\n", 5);
+		ft_free(&a, 0);
 	}
-	else if (*str == '+')
-		str++;
-	if (ft_isdigit(*str) == 0)
-		return (0);
-	while (ft_isdigit(*str) == 1)
-	{
-		i = i * 10 + (*str - 48);
-		str++;
-	}
-	return (mod * i);
+	return (0);
 }

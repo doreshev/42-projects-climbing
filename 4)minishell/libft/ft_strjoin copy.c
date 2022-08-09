@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Created: 2022/04/07 14:12:42 by doreshev          #+#    #+#             */
+/*   Updated: 2022/07/10 13:37:26 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	mod;
-	int	i;
+	char	*new;
+	size_t	i;
+	size_t	length;
 
 	i = 0;
-	mod = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\v' || *str == '\r')
-		str++;
-	if (*str == '-')
+	if (!s1 && !s2)
+		return (NULL);
+	length = ft_strlen(s1) + ft_strlen(s2);
+	new = (char *)malloc(length + 1);
+	if (!new)
+		return (NULL);
+	while (s1 && s1[i])
 	{
-		mod = -1;
-		str++;
+		new[i] = s1[i];
+		i++;
 	}
-	else if (*str == '+')
-		str++;
-	if (ft_isdigit(*str) == 0)
-		return (0);
-	while (ft_isdigit(*str) == 1)
+	length = i;
+	while (s2 && s2[i - length])
 	{
-		i = i * 10 + (*str - 48);
-		str++;
+		new[i] = s2[i - length];
+		i++;
 	}
-	return (mod * i);
+	new[i] = '\0';
+	return (new);
 }

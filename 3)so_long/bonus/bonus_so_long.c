@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:26:36 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/10 21:09:23 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:50:26 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	main(int argc, char **argv)
 		ft_img_render(&map);
 		mlx_hook(map.win, 17, 0, ft_close, &map);
 		mlx_key_hook(map.win, ft_key_hook, &map);
-		ft_game(&map);
 		mlx_loop_hook(map.mlx, ft_game, &map);
 		mlx_loop(map.mlx);
 	}

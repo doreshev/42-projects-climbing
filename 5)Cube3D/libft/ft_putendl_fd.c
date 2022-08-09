@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Created: 2022/04/07 21:36:36 by doreshev          #+#    #+#             */
+/*   Updated: 2022/04/10 14:39:33 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	mod;
-	int	i;
-
-	i = 0;
-	mod = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\v' || *str == '\r')
-		str++;
-	if (*str == '-')
+	if (!s || !fd)
+		return ;
+	while (*s)
 	{
-		mod = -1;
-		str++;
+		write(fd, s, 1);
+		s++;
 	}
-	else if (*str == '+')
-		str++;
-	if (ft_isdigit(*str) == 0)
-		return (0);
-	while (ft_isdigit(*str) == 1)
-	{
-		i = i * 10 + (*str - 48);
-		str++;
-	}
-	return (mod * i);
+	write(fd, "\n", 1);
 }

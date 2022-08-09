@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Created: 2022/04/06 22:22:35 by doreshev          #+#    #+#             */
+/*   Updated: 2022/04/29 16:23:42 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	mod;
-	int	i;
+	void	*p;
+	size_t	i;
 
-	i = 0;
-	mod = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\v' || *str == '\r')
-		str++;
-	if (*str == '-')
-	{
-		mod = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	if (ft_isdigit(*str) == 0)
-		return (0);
-	while (ft_isdigit(*str) == 1)
-	{
-		i = i * 10 + (*str - 48);
-		str++;
-	}
-	return (mod * i);
+	i = size * count;
+	if (size && (i / size != count))
+		return (NULL);
+	p = malloc(i);
+	if (p == NULL)
+		return (NULL);
+	ft_bzero(p, i);
+	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 16:57:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/05 14:36:29 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/06 16:53:07 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	mod = 1;
+	if (!str)
+		return (-1);
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
 		|| *str == '\v' || *str == '\r')
 		str++;
