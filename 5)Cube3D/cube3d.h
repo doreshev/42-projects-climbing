@@ -6,14 +6,14 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:29:19 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 17:20:57 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:08:43 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# define WIDTH 2000
+# define WIDTH 1000
 # define HEIGHT 1000
 # define PI 3.14159265359
 
@@ -28,7 +28,9 @@ typedef struct s_data {
 	void	*ea;
 	void	*we;
 	void	*so;
+	void	*minimap;
 	void	*img;
+	char	*addr;
 	float	map_width;
 	float	map_height;
 	char	player;
@@ -44,7 +46,9 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	char	*addr;
+	int		bits_per_pixel1;
+	int		line_length1;
+	int		endian1;
 	float	dirx;
 	float	diry;
 	float	plane_x;

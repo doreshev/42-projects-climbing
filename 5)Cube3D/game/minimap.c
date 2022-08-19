@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:30:22 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 17:05:30 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:47:51 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ void	ft_minimap_render(t_list *map, t_data *a)
 	int	y;
 	int	x;
 
-	if (a->img)
-		mlx_destroy_image(a->mlx, a->img);
-	a->img = mlx_new_image(a->mlx, WIDTH / 5, HEIGHT / 5);
-	a->line = mlx_get_data_addr(a->img, &a->bits_per_pixel,
+	if (a->minimap)
+		mlx_destroy_image(a->mlx, a->minimap);
+	a->minimap = mlx_new_image(a->mlx, WIDTH / 5, HEIGHT / 5);
+	a->line = mlx_get_data_addr(a->minimap, &a->bits_per_pixel,
 			&a->line_length, &a->endian);
 	y = 0;
 	while (a->map_height > 11 && a->py > y + 5 && a->map_height > y + 10)
@@ -117,5 +117,5 @@ void	ft_minimap_render(t_list *map, t_data *a)
 	else
 		x = a->px - 5;
 	ft_sub_minimap(map, a, x, y);
-	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
+	mlx_put_image_to_window(a->mlx, a->win, a->minimap, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:44:15 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 12:06:33 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:08:38 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void	ft_free(t_data *a)
 	if (a->img)
 		free(a->img);
 	a->img = NULL;
+	if (a->minimap)
+		free(a->minimap);
+	a->minimap = NULL;
+	if (a->addr)
+		free(a->addr);
+	a->addr = NULL;
 	free(a->no);
 	free(a->ea);
 	free(a->we);
