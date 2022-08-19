@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:22:25 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/06 17:23:10 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:43:28 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_img_render(t_data *a)
 	free(tmp);
 	if (!a->ea || !a->so || !a->we || !a->no)
 	{
-		ft_putstr_fd("Error!\nImage file is missing or unavailable!\n", 2);
+		write(2, "Error!\nImage file is missing or unavailable!\n", 45);
 		ft_lstfree(a->map);
 		free(a->mlx);
 		exit(EXIT_FAILURE);
@@ -57,36 +57,15 @@ void	ft_check_map_init(t_data *a)
 		ft_error("Map not found!\n", a);
 	if (a->player == '\0')
 		ft_error("Player position not found!\n", a);
-}
-
-int	ft_key_hook(int keycode, t_data *a)
-{
-	if (keycode == 53)
-		ft_close(a);
-	else if (keycode == 12)
+	if (a->player == 'E')
+		a->diry = -1;
+	else if (a->player == 'N' || a->player == 'S')
 	{
-		if (a->mouse == '\0')
-		{
-			a->mouse = '1';
-			mlx_mouse_show();
-			return (0);
-		}
-		a->mouse = '\0';
-		mlx_mouse_hide();
+		a->dirx = 0;
+		a->diry = -1;
+		if (a->player == 'N')
+			a->diry = 1;
 	}
-	// else if (keycode == 13)
-	// 	ft_wkey(map);
-	// else if (keycode == 1)
-	// 	ft_skey(map);
-	// else if (keycode == 2)
-	// 	ft_dkey(map);
-	// else if (keycode == 0)
-	// 	ft_akey(map);
-	// if (map->gameover > 0)
-	// 	ft_close(map);
-	// mlx_clear_window(map->mlx, map->win);
-	// ft_map_render(map, 0);
-	return (0);
 }
 
 void	ft_game(t_data *a)
@@ -95,7 +74,6 @@ void	ft_game(t_data *a)
 	a->mlx = mlx_init();
 	ft_img_render(a);
 	a->win = mlx_new_window(a->mlx, WIDTH, HEIGHT, "Cube3D");
-	//ft_map_render(a, 0);
 	mlx_mouse_hide();
 	mlx_hook(a->win, 17, 0, ft_close, a);
 	mlx_key_hook(a->win, ft_key_hook, a);

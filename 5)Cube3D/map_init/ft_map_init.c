@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:02:47 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/06 14:44:31 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:04:31 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	ft_map_line_check(char *line, t_data *a)
 			|| line[i] == 'E' || line[i] == 'W')
 		{
 			if (a->player != '\0')
-				ft_error("More than one players!\n", a);
+				ft_error("More than one player!\n", a);
 			a->player = line[i];
-			a->posx = i + 1;
-			a->posy = a->map_height + 1;
+			a->px = i + 1;
+			a->py = a->map_height + 1;
+			line[i] = '0';
 		}
 		else if (line[i] != ' ' && line[i] != '1' && line[i] != '0')
 			ft_error("Invalid Map!\n", a);
@@ -105,8 +106,6 @@ void	ft_map_init(char *line, t_data *a, int fd)
 {
 	int		i;
 
-	if (a->player == '\n')
-		ft_error("Player position not found!", a);
 	while (line)
 	{
 		i = 0;

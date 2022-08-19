@@ -6,7 +6,7 @@
 #    By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 13:29:01 by doreshev          #+#    #+#              #
-#    Updated: 2022/08/06 16:05:25 by doreshev         ###   ########.fr        #
+#    Updated: 2022/08/19 12:46:22 by doreshev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,11 @@ SRC =	cube3d.c \
 		cube3d_utils.c \
 		map_init/init.c \
 		map_init/ft_map_init.c \
-		map_init/ft_check_parameters.c \
+		map_init/ft_check_param.c \
 		game/game.c \
 		game/ft_game_start.c \
+		game/minimap.c \
+		game/ft_keys.c \
 
 OBJ = ${SRC:.c=.o}
 DEP = ${SRC:.c=.d}

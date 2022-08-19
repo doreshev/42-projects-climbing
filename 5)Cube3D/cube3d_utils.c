@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:44:15 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/06 16:56:11 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:06:33 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ void	ft_free(t_data *a)
 	a->map = NULL;
 	if (a->line)
 		free(a->line);
+	a->line = NULL;
 	if (a->mlx)
 		free(a->mlx);
+	a->mlx = NULL;
+	if (a->img)
+		free(a->img);
+	a->img = NULL;
 	free(a->no);
 	free(a->ea);
 	free(a->we);
