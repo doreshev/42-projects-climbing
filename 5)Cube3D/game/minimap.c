@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:30:22 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 17:47:51 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:27:47 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	ft_wall_minimap(t_data *a, int x, int y, int k)
 	int	j;
 	int	i;
 
-	i = 0;
-	while (i <= WIDTH / 50)
+	i = 1;
+	while (i < WIDTH / 50)
 	{
-		j = 0;
-		while (j <= HEIGHT / 50)
+		j = 1;
+		while (j < HEIGHT / 50)
 		{
 			my_mlx_pixel_put_mini(a, i + x * WIDTH / 50,
 				j + y * HEIGHT / 50, k);
@@ -44,23 +44,23 @@ void	ft_player_minimap(t_data *a, float x, float y)
 	float	j;
 	float	i;
 
-	i = WIDTH / 120;
+	i = WIDTH / 140;
 	if (a->px <= 5)
 		x = a->px - 1;
 	else if (a->map_width - a->px < 5)
 		x = 9 - (a->map_width - a->px);
 	else
 		x = 5 + (a->px - (int)a->px - 1);
-	if (a->py <= 5)
+	if (a->py < 5)
 		y = a->py - 1;
-	else if (a->map_height - a->py < 5)
-		y = 9 - (a->map_height - a->py);
+	else if (a->map_height - a->py <= 5)
+		y = 9 - (a->map_height - (a->py - 1));
 	else
-		y = 5 + (a->py - (int)a->py - 1);
-	while (i <= WIDTH / 50 - WIDTH / 120)
+		y = 4 + (a->py - (int)a->py - 1);
+	while (i <= WIDTH / 50 - WIDTH / 140)
 	{
-		j = HEIGHT / 120;
-		while (j <= HEIGHT / 50 - HEIGHT / 120)
+		j = HEIGHT / 140;
+		while (j <= HEIGHT / 50 - HEIGHT / 140)
 		{
 			my_mlx_pixel_put_mini(a, i + x * WIDTH / 50, j + y * HEIGHT / 50, 0x00FF0000);
 			j++;
@@ -105,7 +105,7 @@ void	ft_minimap_render(t_list *map, t_data *a)
 	a->line = mlx_get_data_addr(a->minimap, &a->bits_per_pixel,
 			&a->line_length, &a->endian);
 	y = 0;
-	while (a->map_height > 11 && a->py > y + 5 && a->map_height > y + 10)
+	while (a->map_height > 11 && a->py >= y + 5 && a->map_height >= y + 10)
 	{
 		map = map->next;
 		y++;

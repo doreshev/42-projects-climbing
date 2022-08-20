@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:29:19 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 18:08:43 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/20 18:17:20 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_data {
 	void	*minimap;
 	void	*img;
 	char	*addr;
-	float	map_width;
-	float	map_height;
+	double	map_width;
+	double	map_height;
 	char	player;
 	t_list	*map;
 	int		c[3];
@@ -49,12 +49,14 @@ typedef struct s_data {
 	int		bits_per_pixel1;
 	int		line_length1;
 	int		endian1;
-	float	dirx;
-	float	diry;
-	float	plane_x;
-	float	plane_y;
-	float	px;
-	float	py;
+	double	px;
+	double	py;
+	double	pdx;
+	double	pdy;
+	double	pa;
+	double	rx;
+	double	ry;
+	double	dist;
 }				t_data;
 
 void	ft_error(char *s, t_data *a);
@@ -70,5 +72,6 @@ int		ft_game_start(t_data *a);
 void	ft_game(t_data *a);
 int		ft_key_hook(int keycode, t_data *a);
 void	ft_minimap_render(t_list *map, t_data *a);
+void	ft_ray_cast(t_data *a);
 
 #endif

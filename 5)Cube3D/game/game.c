@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:22:25 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 12:43:28 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:29:44 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ void	ft_check_map_init(t_data *a)
 		ft_error("Map not found!\n", a);
 	if (a->player == '\0')
 		ft_error("Player position not found!\n", a);
-	if (a->player == 'E')
-		a->diry = -1;
-	else if (a->player == 'N' || a->player == 'S')
-	{
-		a->dirx = 0;
-		a->diry = -1;
-		if (a->player == 'N')
-			a->diry = 1;
-	}
+	// if (a->player == 'E')
+	// 	a->diry = -1;
+	// else if (a->player == 'N' || a->player == 'S')
+	// {
+	// 	a->dirx = 0;
+	// 	a->diry = -1;
+	// 	if (a->player == 'N')
+	// 		a->diry = 1;
+	// }
 }
 
 void	ft_game(t_data *a)
@@ -76,7 +76,7 @@ void	ft_game(t_data *a)
 	a->win = mlx_new_window(a->mlx, WIDTH, HEIGHT, "Cube3D");
 	mlx_mouse_hide();
 	mlx_hook(a->win, 17, 0, ft_close, a);
-	mlx_key_hook(a->win, ft_key_hook, a);
+	mlx_hook(a->win, 2, 0, ft_key_hook, a);
 	mlx_loop_hook(a->mlx, ft_game_start, a);
 	mlx_loop(a->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:29:09 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 18:08:41 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:31:05 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ void	ft_map_initialize(t_data *a)
 	a->addr = NULL;
 	a->minimap = NULL;
 	a->mouse = '\0';
-	a->diry = 0;
-	a->dirx = 1;
-	a->plane_x = 0;
-	a->plane_y = 0.66;
+	a->pdx = cos(a->pa);
+	a->pdy = sin(a->pa);
 }
 
 int	main()//int argc, char **argv)
