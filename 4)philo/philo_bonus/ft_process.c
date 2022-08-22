@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:15:48 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/20 19:45:44 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/21 13:36:36 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_dead(t_data *data)
 		j = ft_time(data->last_eat);
 		if (j >= data->t2d)
 		{
-			kill(-1, SIGCONT);
 			*data->die = 1;
 			i = ft_time(data->time);
 			sem_wait(data->in);

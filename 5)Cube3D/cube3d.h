@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:29:19 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/20 18:17:20 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:08:32 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,24 @@
 
 # define WIDTH 1000
 # define HEIGHT 1000
-# define PI 3.14159265359
+# define DR 0.0174533
 
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+
+typedef struct s_ray {
+	int		dof;
+	double	xo;
+	double	yo;
+	double	ra;
+	double	hx;
+	double	hy;
+	double	vx;
+	double	vy;
+}				t_ray;
 
 typedef struct s_data {
 	void	*no;
@@ -73,5 +84,9 @@ void	ft_game(t_data *a);
 int		ft_key_hook(int keycode, t_data *a);
 void	ft_minimap_render(t_list *map, t_data *a);
 void	ft_ray_cast(t_data *a);
+void	draw_line(t_data *a, int i);
+char	get_map_symbol(int	mx, int my, t_data *a);
+double	ft_distance(t_ray *ray, t_data *a);
+void	remove_fisheye(t_ray *ray, t_data *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:43:18 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/20 16:31:23 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:08:11 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,36 @@
 
 void	w_key(t_data *a)
 {
-	// if (a->py > 1)
-	// 	a->py -= 0.2;
-	a->px += a->pdx;
-	a->py += a->pdy;
+	if (get_map_symbol(a->px + a->pdx, a->py + a->pdy, a) == '0')
+	{
+		a->px += a->pdx;
+		a->py += a->pdy;
+	}
 }
 
 void	s_key(t_data *a)
 {
-	// if (a->py < a->map_height)
-	// 	a->py += 0.2;
-	a->px -= a->pdx;
-	a->py -= a->pdy;
+	if (get_map_symbol(a->px - a->pdx, a->py - a->pdy, a) == '0')
+	{
+		a->px -= a->pdx;
+		a->py -= a->pdy;
+	}
 }
 
 void	d_key(t_data *a)
 {
-	// if (a->px < a->map_width)
-	// 	a->px += 0.2;
 	a->pa += 0.1;
-	if (a->pa > 2 * PI)
-		a->pa -= 2 * PI;
+	if (a->pa > 2 * M_PI)
+		a->pa -= 2 * M_PI;
 	a->pdx = cos(a->pa);
 	a->pdy = sin(a->pa);
 }
 
 void	a_key(t_data *a)
 {
-	// if (a->px > 1)
-	// 	a->px -= 0.2;
 	a->pa -= 0.1;
 	if (a->pa < 0)
-		a->pa += 2 * PI;
+		a->pa += 2 * M_PI;
 	a->pdx = cos(a->pa);
 	a->pdy = sin(a->pa);
 }

@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:29:09 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/20 16:31:05 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/21 13:49:36 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_map_initialize(t_data *a)
 	a->mouse = '\0';
 	a->pdx = cos(a->pa);
 	a->pdy = sin(a->pa);
+	a->dist = 1e30;
 }
 
 int	main()//int argc, char **argv)

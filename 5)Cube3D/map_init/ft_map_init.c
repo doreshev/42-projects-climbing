@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:02:47 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/19 15:04:31 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:51:21 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_map_line_check(char *line, t_data *a)
 			if (a->player != '\0')
 				ft_error("More than one player!\n", a);
 			a->player = line[i];
-			a->px = i + 1;
-			a->py = a->map_height + 1;
+			a->px = i + 0.5;
+			a->py = a->map_height + 0.5;
 			line[i] = '0';
 		}
 		else if (line[i] != ' ' && line[i] != '1' && line[i] != '0')

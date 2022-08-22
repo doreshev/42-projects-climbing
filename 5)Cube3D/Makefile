@@ -6,7 +6,7 @@
 #    By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 13:29:01 by doreshev          #+#    #+#              #
-#    Updated: 2022/08/20 18:03:18 by doreshev         ###   ########.fr        #
+#    Updated: 2022/08/21 13:42:22 by doreshev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC =	cube3d.c \
 		game/ft_game_start.c \
 		game/minimap.c \
 		game/ft_keys.c \
-		game/ray_cast.c \
+		game/raycast.c \
+		game/game_utils.c \
 
 OBJ = ${SRC:.c=.o}
 DEP = ${SRC:.c=.d}
