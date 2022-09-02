@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:15:48 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/21 13:36:36 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:37:26 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_child_process(t_data *data)
 	die = 0;
 	data->die = &die;
 	if (data->phn % 2 != 0)
-		ft_sleep(80);
+		usleep(200);
 	if (pthread_create(data->tid, 0, (void *)&ft_dead, (void *)data))
 		exit(1);
 	if (data->t2em)
