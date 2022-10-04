@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:02:23 by doreshev          #+#    #+#             */
-/*   Updated: 2022/09/16 13:10:36 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/17 11:10:59 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ class Fixed {
 		Fixed(void);
 		Fixed(const int i);
 		Fixed(const float i);
-		Fixed(Fixed const & fixed);
+		Fixed(const Fixed & fixed);
 		~Fixed(void);
 
-		Fixed &	operator=(Fixed const & other);
+		Fixed &	operator=(const Fixed & other);
 
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
 		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 
 	private:
-		void	setRawBits( int const raw );
 		int					_rawbits;
 		static	const int	_point_pos;
 

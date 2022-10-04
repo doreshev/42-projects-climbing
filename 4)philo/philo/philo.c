@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:29:29 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/28 19:11:13 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:13:08 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_sub_dead(t_data *data)
 	while (*data->done < data->tot_ph)
 	{
 		j = ft_time(data->last_eat);
+		data->test++;
 		if (j >= data->t2d)
 		{
 			*data->die = 1;

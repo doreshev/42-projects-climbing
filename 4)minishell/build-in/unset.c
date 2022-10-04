@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 13:13:59 by amathew           #+#    #+#             */
-/*   Updated: 2022/07/27 12:39:33 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/12 10:57:38 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ void	ft_delete_in_env_sub(char *s, t_env *env)
 
 void	ft_delete_in_env(char *s, t_env *env, t_data *a)
 {
-	int		i;
-
-	i = 0;
 	if (!env)
 		return ;
 	if (ft_strncmp(s, env->key, 0) == 0)

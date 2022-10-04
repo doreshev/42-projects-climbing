@@ -31,7 +31,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_rawbits = roundf(f * (1 << _point_pos));
+	this->_rawbits = roundf(f * (1 << this->_point_pos));
 }
 
 Fixed::~Fixed(void)
@@ -39,24 +39,26 @@ Fixed::~Fixed(void)
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed const & fixed)
+Fixed::Fixed(const Fixed & fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(fixed.getRawBits());
+	*this = fixed;
 }
 
 //......................//
 
 //	Operators Overload	//
 
-Fixed &	Fixed::operator=(Fixed const & fixed)
+Fixed &	Fixed::operator=(const Fixed & fixed)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->setRawBits(fixed.getRawBits());
+	if (this == &fixed)
+		return (*this);
+	this->_rawbits = fixed.getRawBits();
 	return (*this);
 }
 
-std::ostream &	operator<<(std::ostream & o, Fixed const & other)
+std::ostream &	operator<<(std::ostream & o, const Fixed & other)
 {
 	o << other.toFloat();
 	return o;
@@ -78,7 +80,7 @@ void	Fixed::setRawBits( int const raw )
 
 float	Fixed::toFloat( void ) const
 {
-	return ((float)this->_rawbits / (1 << _point_pos));
+	return (static_cast<float>(this->_rawbits) / (1 << _point_pos));
 }
 
 int		Fixed::toInt( void ) const

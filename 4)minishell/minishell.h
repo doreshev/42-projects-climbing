@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:13 by doreshev          #+#    #+#             */
-/*   Updated: 2022/07/27 13:30:59 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:58:19 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_env
 
 typedef struct s_token
 {
-	int				i;
+	int				i;					//flag for joining text in this tocken
 	char			c;
 	char			*content;
 	struct s_token	*next;

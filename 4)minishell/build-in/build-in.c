@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:54:35 by doreshev          #+#    #+#             */
-/*   Updated: 2022/07/27 13:22:39 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/12 11:00:55 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	build_in_sub1(char *s, t_data *a, int k)
 	int		i;
 
 	i = 0;
-	while (s[i] && s[i] != ' ')
+	while (s && s[i] && s[i] != ' ')
 		i++;
 	if (k != 0)
 		ft_signals('3');

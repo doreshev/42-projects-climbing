@@ -6,13 +6,13 @@
 #    By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 13:29:01 by doreshev          #+#    #+#              #
-#    Updated: 2022/08/23 17:12:19 by doreshev         ###   ########.fr        #
+#    Updated: 2022/09/29 15:07:14 by doreshev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-CC = cc
+CC = gcc
 
 RM = rm -f
 
@@ -29,7 +29,7 @@ OBJ = ${SRC:.c=.o}
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ}
-		${CC} ${OBJ} -o ${NAME} 
+		${CC} ${OBJ} -fsanitize=thread -o ${NAME} 
 
 all: ${NAME}
 

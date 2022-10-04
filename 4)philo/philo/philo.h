@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:13 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/22 15:08:40 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:08:21 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	struct timeval	*last_eat;
 	struct timeval	*time;
 	struct s_data	*next;
+	int				test;
 }					t_data;
 
 void				ft_thread(t_data *data);

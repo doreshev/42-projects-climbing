@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:15:48 by doreshev          #+#    #+#             */
-/*   Updated: 2022/06/24 13:23:04 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:10:27 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	ft_thread_sub(t_data *data)
 	ft_sleep(data->t2e);
 	pthread_mutex_unlock(data->fork_l);
 	pthread_mutex_unlock(data->fork_r);
+	if (data->test != -1)
+		data->test++;
 }
 
 void	ft_thread_t2em(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:02:23 by doreshev          #+#    #+#             */
-/*   Updated: 2022/09/16 13:59:48 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/17 16:45:00 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,23 @@ class Fixed {
 		Fixed 	operator*(Fixed const & other) const;
 		Fixed 	operator/(Fixed const & other) const;
 		//	Increment/decrement  operators	//
-		Fixed 	operator++(void) const;
-		Fixed 	operator--(void) const;
-		Fixed 	operator++(int) const;
-		Fixed 	operator--(int) const;
+		Fixed &	operator++(void);
+		Fixed &	operator--(void);
+		Fixed 	operator++(int);
+		Fixed 	operator--(int);
 
 		//	Class member functions			//
+		static Fixed &	min(Fixed & f1, Fixed & f2);
+		static const Fixed &	min(Fixed const & f1, Fixed const & f2);
+		static Fixed &	max(Fixed & f1, Fixed & f2);
+		static const Fixed &	max(Fixed const & f1, Fixed const & f2);
+
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
-		static Fixed &	min(Fixed & f1, Fixed & f2);
-		static Fixed &	min(Fixed const & f1, Fixed const & f2);
-		static Fixed &	max(Fixed & f1, Fixed & f2);
-		static Fixed &	max(Fixed const & f1, Fixed const & f2);
 		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 
 	private:
-		void	setRawBits( int const raw );
 		int					_rawbits;
 		static	const int	_point_pos;
 

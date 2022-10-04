@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:44:30 by doreshev          #+#    #+#             */
-/*   Updated: 2022/09/08 16:56:10 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/26 13:54:48 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	main(int argc, char **argv)
 	else
 	{
 		for (i = 1; i < argc; i++)
-		{
 			for (j = 0; argv[i][j]; j++)
-				std::cout << (char)toupper(argv[i][j]);
-		}
+				std::cout << static_cast<char>(toupper(argv[i][j]));
 	}
 	std::cout << std::endl;
 	return (0);

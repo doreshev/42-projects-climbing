@@ -6,7 +6,7 @@
 #    By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 13:29:01 by doreshev          #+#    #+#              #
-#    Updated: 2022/07/27 14:03:20 by doreshev         ###   ########.fr        #
+#    Updated: 2022/09/21 11:01:42 by doreshev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ INCREADH = -I /Users/$(USER)/.brew/opt/readline/include
 ${NAME}: ${OBJ}
 	@make -C $(LIBFTDIR)
 	${CC} ${OBJ} ${INCLIBFT} ${INCREADL} -o ${NAME}
-	
+
 all: ${NAME}
 
 bonus: all

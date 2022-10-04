@@ -6,7 +6,7 @@
 /*   By: doreshev <doreshev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:09:46 by doreshev          #+#    #+#             */
-/*   Updated: 2022/08/24 12:11:00 by doreshev         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:53:42 by doreshev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	ft_initialize_sub2(int argc, char **argv, t_data *data)
 
 int	ft_initialize_sub(t_data *data, int k, int *die)
 {
-	t_data				*tmp;
-	int					i;
+	t_data	*tmp;
+	int		i;
 
 	i = 0;
 	while (k > i++)
