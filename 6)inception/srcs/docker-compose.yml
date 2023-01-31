@@ -1,0 +1,72 @@
+version: "3.6"
+
+networks:
+  inception:
+    driver: bridge
+
+volumes:
+  voldb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/doreshev/data/mysql
+  volwp:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/doreshev/data/html
+
+services:
+
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx/
+    networks:
+      - inception
+    volumes:
+      - volwp:/var/www/
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    restart: on-failure
+
+  mariadb:
+    container_name: mariadb
+    build: 
+      context: ./requirements/mariadb/
+      dockerfile: Dockerfile
+      args:
+        DB_NAME: $DB_NAME
+        DB_ROOT: $DB_ROOT
+        DB_PASS: $DB_PASS
+        DB_USER: $DB_USER
+    networks:
+     - inception
+    volumes:
+      - voldb:/var/lib/mysql/
+    restart: on-failure
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress/
+    environment:
+      EVAL_PASS: $EVAL_PASS
+      WP_ADMIN: $WP_ADMIN
+      DB_HOST: $DB_HOST
+      DB_NAME: $DB_NAME
+      DB_USER: $DB_USER
+      DB_PASS: $DB_PASS
+      WP_PASS: $WP_PASS
+      DOMAIN: $DOMAIN
+      EMAIL: $EMAIL
+      TITLE: $TITLE
+    networks:
+      - inception
+    volumes:
+      - volwp:/var/www/
+    depends_on:
+      - mariadb
+    restart: on-failure
