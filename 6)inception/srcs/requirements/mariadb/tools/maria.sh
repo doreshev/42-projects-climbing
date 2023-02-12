@@ -15,7 +15,6 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 
         chown -R mysql:mysql /var/lib/mysql
 
-        # init database
         mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm
 
         tfile=`mktemp`
@@ -39,7 +38,6 @@ CREATE USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';
 GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%';
 FLUSH PRIVILEGES;
 EOF
-        # run init.sql
         /usr/bin/mysqld --user=mysql --bootstrap < /tmp/create_db.sql
         rm -f /tmp/create_db.sql
 fi

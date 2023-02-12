@@ -30,7 +30,7 @@ services:
     ports:
       - "443:443"
     depends_on:
-      - wordpress
+      - grafana
     restart: on-failure
 
   mariadb:
@@ -69,4 +69,67 @@ services:
       - volwp:/var/www/
     depends_on:
       - mariadb
+      - redis
+      - adminer
+    restart: on-failure
+
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis/
+    networks:
+      - inception
+    restart: on-failure
+
+  ftp:
+    container_name: ftp
+    build:
+      context: ./requirements/bonus/ftp/
+      dockerfile: Dockerfile
+      args:
+        FTP_USER: $FTP_USER
+        FTP_PASS: $FTP_PASS
+    networks:
+      - inception
+    volumes:
+      - volwp:/var/www/
+    depends_on:
+      - wordpress
+    ports:
+      - "21:21"
+    restart: on-failure
+  
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer/
+    networks:
+      - inception
+    volumes:
+      - volwp:/var/www/
+    depends_on:
+      - mariadb
+    restart: on-failure
+  
+  website:
+    container_name: website
+    build: ./requirements/bonus/website/
+    ports:
+      - "80:80"
+    restart: on-failure
+  
+  grafana:
+    container_name: grafana
+    build: ./requirements/bonus/grafana/
+    environment:
+      GF_SECURITY_ADMIN_USER: $GF_SECURITY_ADMIN_USER
+      GF_SECURITY_ADMIN_PASSWORD: $GF_SECURITY_ADMIN_PASSWORD
+      GF_DATABASE_TYPE: $DP_HOST
+      GF_DATABASE_NAME: $DB_NAME
+      GF_DATABASE_USER: $DB_USER
+      GF_DATABASE_PASSWORD: $DB_PASS
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    ports:
+      - "3000:3000"
     restart: on-failure

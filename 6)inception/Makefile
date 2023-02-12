@@ -24,3 +24,9 @@ fclean:
 rm:
 	@sudo rm -rf /home/doreshev/data/mysql/*
 	@sudo rm -rf /home/doreshev/data/html/*
+
+re: clean rm all
+
+bonus: all
+
+.PHONY : all clean fclean re run bonus rm stop down build

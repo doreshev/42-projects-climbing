@@ -15,11 +15,12 @@ if [ ! -f "/var/www/wp-config.php" ]; then
       wp core download --path=. --allow-root
       wp config create --dbhost=$DB_HOST --dbname=$DB_NAME \
             --dbuser=$DB_USER --dbpass=$DB_PASS --allow-root
-
+      wp config set ABSPATH "__DIR__ . '/'"
+      wp config set WP_REDIS_HOST "redis"
       wp core install --url=$DOMAIN --title=$TITLE --admin_user=$WP_ADMIN \
             --admin_password=$WP_PASS --admin_email=$EMAIL --allow-root
-
       wp user create evaluator evaluator@evaluator.com --role=author --user_pass=$EVAL_PASS --allow-root
+      wp plugin install redis-cache --activate
 fi
 
 exec /usr/sbin/php-fpm8 -F
