@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 36px;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button a {
+      color: #fff;
+      text-decoration: none;
+    }
+    form {
+      margin-top: 50px;
+      display: inline-block;
+      text-align: left;
+    }
+    input[type="file"] {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Thank you for providing us your Username and Password! ^_^</h1>
+  <button><a href="hering.py">Hering</a></button>
+  <button><a href="start.py?action=logout">Logout</a></button>
+  <button><a href="raccoon.py">Racoon</a></button>
+  <br>
+  <button><a href="about.html">About</a></button>
+  <button><a href="current_time.py">Time</a></button>
+  <button><a href="index.html">Home</a></button>
+  <br>
+  <form action="upload.py" method="post" enctype="multipart/form-data">
+    <input type="file" name="name">
+    <br><br>
+    <input type="submit" value="Upload">
+  </form>
+  <br><br>
+</body>
+</html>
